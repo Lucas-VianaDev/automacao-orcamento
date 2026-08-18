@@ -2,6 +2,8 @@
 
 Ferramenta demonstrativa para criar orçamentos de forma rápida.
 
+https://lucas-vianadev.github.io/automacao-orcamento/
+
 ## O problema
 
 Muitos pequenos negócios ainda criam orçamentos manualmente no WhatsApp, no caderno ou em planilhas desorganizadas. Isso gera demora, erro de cálculo e perda de oportunidades.
