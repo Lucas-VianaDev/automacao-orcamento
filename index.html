@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OrçaFácil | Automação de orçamentos</title>
+    <meta
+      name="description"
+      content="Ferramenta demonstrativa para criar orçamentos, calcular descontos e gerar mensagem pronta para WhatsApp."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Automação comercial</p>
+        <h1>OrçaFácil</h1>
+      </div>
+      <button id="clearHistory" type="button">Limpar histórico</button>
+    </header>
+
+    <main class="app">
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Novo orçamento</h2>
+          <p>Preencha os dados, adicione itens e gere uma proposta pronta para enviar.</p>
+        </div>
+
+        <form id="quoteForm">
+          <div class="grid-2">
+            <label>
+              Cliente
+              <input id="clientName" placeholder="Ex: Oficina Central" required />
+            </label>
+            <label>
+              Validade
+              <input id="validUntil" type="date" required />
+            </label>
+          </div>
+
+          <div class="item-row">
+            <label>
+              Serviço/produto
+              <input id="itemName" placeholder="Ex: Criação de landing page" />
+            </label>
+            <label>
+              Quantidade
+              <input id="itemQty" type="number" min="1" value="1" />
+            </label>
+            <label>
+              Valor unitário
+              <input id="itemPrice" type="number" min="0" step="0.01" value="0" />
+            </label>
+            <button id="addItem" type="button">Adicionar</button>
+          </div>
+
+          <label>
+            Desconto (%)
+            <input id="discount" type="number" min="0" max="100" value="0" />
+          </label>
+
+          <label>
+            Observações
+            <textarea id="notes" rows="4" placeholder="Prazo, condições de pagamento e detalhes importantes."></textarea>
+          </label>
+        </form>
+      </section>
+
+      <aside class="summary">
+        <h2>Resumo</h2>
+        <div id="itemsList" class="items-list"></div>
+        <div class="totals">
+          <div><span>Subtotal</span><strong id="subtotal">R$ 0,00</strong></div>
+          <div><span>Desconto</span><strong id="discountValue">R$ 0,00</strong></div>
+          <div class="grand"><span>Total</span><strong id="total">R$ 0,00</strong></div>
+        </div>
+        <div class="actions">
+          <button id="saveQuote" type="button">Salvar orçamento</button>
+          <button id="copyMessage" type="button">Copiar mensagem</button>
+          <button id="exportPdf" class="secondary" type="button">Exportar PDF</button>
+        </div>
+        <p id="feedback" class="feedback" aria-live="polite"></p>
+      </aside>
+
+      <section class="panel history-panel">
+        <div class="panel-head">
+          <h2>Histórico</h2>
+          <p>Orçamentos salvos neste navegador usando LocalStorage.</p>
+        </div>
+        <div id="history" class="history"></div>
+      </section>
+    </main>
+
+    <template id="emptyTemplate">
+      <p class="empty">Nenhum item adicionado ainda.</p>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
